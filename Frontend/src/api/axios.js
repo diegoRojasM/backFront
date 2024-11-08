@@ -2,8 +2,8 @@ import axios from "axios";
 
 
 const instance = axios.create({
-  baseURL: 'http://localhost:4000/api',
-  withCredentials: true,
+  baseURL: 'https://backfront-bgob.onrender.com/api', // URL del backend en Render
+  withCredentials: true, // Si usas cookies o autenticación basada en sesiones
 });
 
 export default instance;
