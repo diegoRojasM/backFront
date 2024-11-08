@@ -3,15 +3,11 @@ import bcrypt  from "bcryptjs"
 import {createAccessToken} from '../libs/jwt.js'
 import jwt from 'jsonwebtoken'
 import { TOKEN_SECRET } from "../config.js"
-
-
-
+ 
 export const register = async (req, res) => {
     console.log(req.body);
     const {email,password,username} = req.body
-
     try{
-
 
         const userFound = await User.findOne({ email });
 
@@ -81,7 +77,6 @@ export const logout = (req,res) => {
         expires: new Date(0),
     })
     return  res.sendStatus(200)
-
 }
 
 export const profile = async (req, res) => {
@@ -110,10 +105,10 @@ export const verifyToken = async (req, res) => {
     if (!token) return res.status(401).json({message: 'No autorizado'});
   
     jwt.verify(token, TOKEN_SECRET, async (error, user) => {
-      if (error) return res.Status(401).json({message: 'No autorizado'})
+      if (error) return res.status(401).json({message: 'No autorizado'})
   
       const userFound = await User.findById(user.id);
-      if (!userFound) return res.Status(401).json({message: 'No autorizado'});
+      if (!userFound) return res.status(401).json({message: 'No autorizado'});
   
       return res.json({
         id: userFound._id,

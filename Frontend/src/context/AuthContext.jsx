@@ -76,8 +76,7 @@ export const AuthProvider = ({ children }) => {
       }
 
       try {
-        const res = await verifyTokenRequest(cookies.token);
- 
+        const res = await verifyTokenRequest(); // El token se envía automáticamente con withCredentials
         if (!res.data) {
           setIsAuthenticated(false);
           setLoading(false);
