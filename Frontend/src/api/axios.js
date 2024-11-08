@@ -1,8 +1,7 @@
 import axios from "axios";
 
-
 const instance = axios.create({
-  baseURL: 'https://backfront-bgob.onrender.com/api', // URL del backend en Render
+  baseURL: import.meta.env.VITE_API_URL, // Asegúrate de que esta variable esté correctamente definida
   withCredentials: true, // Si usas cookies o autenticación basada en sesiones
 });
 
